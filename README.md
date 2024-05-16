@@ -1,77 +1,95 @@
-# quick-pylib
+# Way3: A Python Module for File Operations
 
-[![Auto CI and Build Tools](https://github.com/aboutmydreams/quick-pylib/actions/workflows/ci-test.yml/badge.svg)](https://github.com/aboutmydreams/quick-pylib/actions/workflows/ci-test.yml)
-[![Auto Publish to PyPI and GitHub Release](https://github.com/aboutmydreams/quick-pylib/actions/workflows/release.yml/badge.svg)](https://github.com/aboutmydreams/quick-pylib/actions/workflows/release.yml)
-[![label](https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-ZH-brightgreen)](https://github.com/aboutmydreams/quick-pylib/blob/main/README_ZH.md)
-[![label](https://img.shields.io/badge/English-EN-brightgreen)](https://github.com/aboutmydreams/quick-pylib/blob/main/README.md)
-[![Release Version](https://img.shields.io/github/release/aboutmydreams/quick-pylib.svg)](https://github.com/aboutmydreams/quick-pylib/releases)
-[![Visits](https://komarev.com/ghpvc/?username=aboutmydreams&repo=quick-pylib)](https://github.com/aboutmydreams/quick-pylib)
-[![License](https://img.shields.io/github/license/aboutmydreams/quick-pylib.svg)](https://github.com/aboutmydreams/quick-pylib/license)
-[![Stars](https://img.shields.io/github/stars/aboutmydreams/quick-pylib.svg)](https://github.com/aboutmydreams/quick-pylib/stargazers)
-[![Forks](https://img.shields.io/github/forks/aboutmydreams/quick-pylib.svg)](https://github.com/aboutmydreams/quick-pylib/network)
-[![Downloads](https://pepy.tech/badge/quick-pylib)](https://pepy.tech/project/quick-pylib)
-[![Contributors](https://img.shields.io/github/contributors/aboutmydreams/quick-pylib.svg)](https://github.com/aboutmydreams/quick-pylib/graphs/contributors)
+[![Auto CI and Build Tools](https://github.com/aboutmydreams/way3/actions/workflows/ci-test.yml/badge.svg)](https://github.com/aboutmydreams/way3/actions/workflows/ci-test.yml)
+[![Auto Publish to PyPI and GitHub Release](https://github.com/aboutmydreams/way3/actions/workflows/release.yml/badge.svg)](https://github.com/aboutmydreams/way3/actions/workflows/release.yml)
+[![label](https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-ZH-brightgreen)](https://github.com/aboutmydreams/way3/blob/main/README_ZH.md)
+[![label](https://img.shields.io/badge/English-EN-brightgreen)](https://github.com/aboutmydreams/way3/blob/main/README.md)
+[![Release Version](https://img.shields.io/github/release/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/releases)
+[![Visits](https://komarev.com/ghpvc/?username=aboutmydreams&repo=way3)](https://github.com/aboutmydreams/way3)
+[![License](https://img.shields.io/github/license/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/license)
+[![Stars](https://img.shields.io/github/stars/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/stargazers)
+[![Forks](https://img.shields.io/github/forks/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/network)
+[![Downloads](https://pepy.tech/badge/way3)](https://pepy.tech/project/way3)
+[![Contributors](https://img.shields.io/github/contributors/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/graphs/contributors)
 
-A python library development template that is quick to release and easy to maintain.
 
-## Quick starter
 
-- Modify all `example_lib_name` to `your_lib_name`
-- Edit `hello_world.py` (that's your library main code), and remenber to modify the file name 😊
-- Select the library license. [Choosealicense] website will be helpful.
-- Write your own code, documentation and test.
-- Modify the description of this library in `setup.py`
+Way3 is a Python module for performing file operations such as creating, appending to, and deleting files. It provides a convenient and easy-to-use interface for performing file operations.
 
-## Publish manually
+## Installation
 
-- `python3 setup.py sdist bdist_wheel` (if you not have setuptools and wheel, run `pip3 install setuptools wheel`)
-
-- `twine upload dist/*`  (if you not have twine, run `pip3 install twine`)
-
-- input the your API token in cmd, if you not have a api token
-
-### Run the script manually by one command
-
-`python3 update_version.py; git add -A; git commit -m"update version name"; git push; python3 setup.py sdist bdist_wheel; twine upload dist/*`
-
-### PreCommit setting(If you want to automatically update version)
-
-In the terminal, enter vim `.git/hooks/pre-commit` to open the pre-commit hook script. Add the following lines to the file: #!/bin/bash
+To install Way3, you can use pip:
 
 ```bash
-# Run the update_version.py script before committing.
-python3 update_version.py
-
-# Continue with the commit.
-git add -A
+pip install way3
 ```
 
-Ensure that the script has execute permissions: 
-`chmod +x .git/hooks/pre-commit`
+## Usage
 
-This code sets up a Git hook that runs the update_version.py script before each commit. This script updates the version number in your Python package’s setup.py file. The hook also automatically stages the changes to the setup.py file. This ensures that the version number is always up-to-date and that the changes are included in the commit.
+Here are the functions provided by Way3:
 
-## Use github action
+### create_file(file_name: str, content: str, file_path: Union[str, os.PathLike] = ".", force_rewrite: bool = True) -> tuple[bool, str]
 
-This action supports PyPI's [trusted publishing]
-implementation, which allows authentication to PyPI without a manually
-configured API token or username/password combination. To perform
-[trusted publishing] with this action, your project's
-publisher must already be [configured on PyPI].
+Creates a new file with the given file name and content. If the file already exists and `force_rewrite` is set to True, the file will be overwritten.
 
-In this example case, add your [PYPI_API_TOKEN] and [RESP_GITHUB_TOKEN] in your repository setting: `https://github.com/your_github_name/your_lib_name/settings/secrets/actions`
+Example:
 
-## Run test
+```python
+import way3
 
-- Change the `test_hello_world.py` to test your library functions.
-- Run `python3 -m unittest discover -s tests`
+result = way3.create_file("test.txt", "test")
+print(result[1])  # prints the absolute path of the created file
+```
 
-## Token security
+### add_to_file_end(file_name: str, content: str, file_path: Union[str, os.PathLike] = ".", create_if_not_exist: bool = True) -> tuple[bool, str]
 
-I recommend that you use manual publishing for the first time, and choose action publishing in subsequent releases. Because only after you publish manually can you selectively obtain the token that is only valid for this library, it will be safer to use this token for action.
+Appends the given content to the end of the file with the given file name. If the file does not exist and `create_if_not_exist` is set to True, a new file will be created.
 
-[trusted publishing]: https://docs.pypi.org/trusted-publishers/
-[configured on PyPI]: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
-[PYPI_API_TOKEN]: https://pypi.org/help/#apitoken
-[RESP_GITHUB_TOKEN]: https://github.com/settings/tokens?type=beta
-[Choosealicense]: https://choosealicense.com
+Example:
+
+```python
+import way3
+
+result = way3.add_to_file_end("test.txt", "test")
+print(result[1])  # prints the absolute path of the file
+```
+
+### delete_file(file_name: str, file_path: Union[str, os.PathLike] = ".") -> tuple[bool, str]
+
+Deletes the file with the given file name.
+
+Example:
+
+```python
+import way3
+
+result = way3.delete_file("test.txt")
+print(result[1])  # prints the absolute path of the deleted file
+```
+
+### get_current_dir(instance=__file__) -> str
+
+Returns the current working directory.
+
+Example:
+
+```python
+import way3
+
+result = way3.get_current_dir()
+print(result)  # prints the current working directory
+```
+
+## Testing
+
+To run the tests, you can use the following command:
+
+```bash
+python3 -m unittest discover -s tests
+```
+
+## License
+
+Way3 is released under the MIT License. See [LICENSE](LICENSE) for details.
+
+I hope you find Way3 useful! If you have any questions or feedback, please open an issue or pull request.
