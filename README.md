@@ -12,8 +12,6 @@
 [![Downloads](https://pepy.tech/badge/way3)](https://pepy.tech/project/way3)
 [![Contributors](https://img.shields.io/github/contributors/aboutmydreams/way3.svg)](https://github.com/aboutmydreams/way3/graphs/contributors)
 
-
-
 Way3 is a Python module for performing file operations such as creating, appending to, and deleting files. It provides a convenient and easy-to-use interface for performing file operations.
 
 ## Installation
