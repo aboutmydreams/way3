@@ -13,3 +13,12 @@ from .file_find.traverse_files_from_folder import is_gitignored as is_gitignored
 from .file_find.traverse_files_from_folder import (  # noqa: E402
     get_files_in_directory as get_files_in_directory,
 )
+from .file_find.traverse_files_from_folder import (  # noqa: E402
+    get_directory_structure as get_directory_structure,
+)
+from .file_find.traverse_files_from_folder import (  # noqa: E402
+    get_directory_folder_list as get_directory_folder_list,
+)
+from .file_find.traverse_files_from_folder import (  # noqa: E402
+    get_directory_file_list as get_directory_file_list,
+)

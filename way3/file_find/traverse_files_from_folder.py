@@ -1,51 +1,6 @@
 import os
-import fnmatch
-
-
-def parse_gitignore(
-    gitignore_path=".gitignore", ignored_files=[".git/", ".venv/", ".github/"]
-):
-    """
-    解析 .gitignore 文件，返回忽略规则列表
-    """
-
-    if os.path.exists(gitignore_path):
-        with open(gitignore_path, "r") as gitignore_file:
-            for line in gitignore_file:
-                line = line.strip()
-                if line and not line.startswith("#"):
-                    ignored_files.append(line)
-    return ignored_files
-
-
-def is_gitignored(file_path, gitignore_rules):
-    """
-    Check if a file path is ignored according to the given gitignore rules.
-
-    Args:
-        file_path (str): The absolute path to the file.
-        gitignore_rules (list): List of gitignore rules.
-
-    Returns:
-        bool: True if the file is ignored, False otherwise.
-    """
-    for rule in gitignore_rules:
-        # Handle comments and empty lines
-        if not rule or rule.startswith("#"):
-            continue
-        # Handle negated rules
-        negated = False
-        if rule.startswith("!"):
-            negated = True
-            rule = rule[1:]
-
-        # Check if the file matches the rule
-        if fnmatch.fnmatch(file_path, rule):
-            return not negated
-        if rule in str(file_path):
-            return not negated
-
-    return False
+from typing import Dict, List
+from ..utils.ignore_rule import parse_gitignore, is_gitignored
 
 
 def get_files_in_directory(directory, should_ignore=True, ignore_file_path=None):
@@ -78,3 +33,37 @@ def get_files_in_directory(directory, should_ignore=True, ignore_file_path=None)
 # current_directory = "."  # 当前目录
 # files = get_files_in_directory(current_directory)
 # print(files)
+
+
+def get_directory_structure(path) -> Dict[str, Dict[str, List[str]]]:
+    """
+    获取指定路径下的目录结构
+    :param path: 路径
+    :return: 目录结构
+    """
+    directory_structure = {}
+    for root, dirs, files in os.walk(path):
+        directory_structure[root] = {"dirs": dirs, "files": files}
+    return directory_structure
+
+
+def get_directory_folder_list(path) -> List[str]:
+    """
+    获取指定路径下的目录结构
+    :param path: 路径
+    :return: 目录结构
+    """
+    directory_structure = get_directory_structure(path)
+    absolute_path = list(directory_structure.keys())[0]
+    return directory_structure[absolute_path]["dirs"]
+
+
+def get_directory_file_list(path) -> List[str]:
+    """
+    获取指定路径下的目录结构
+    :param path: 路径
+    :return: 目录结构
+    """
+    directory_structure = get_directory_structure(path)
+    absolute_path = list(directory_structure.keys())[0]
+    return directory_structure[absolute_path]["files"]
