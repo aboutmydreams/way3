@@ -1,6 +1,6 @@
 import os
 from typing import Dict, List
-from ..utils.ignore_rule import parse_gitignore, is_gitignored
+from way3.utils.ignore_rule import parse_gitignore, is_gitignored
 
 
 def get_files_in_directory(directory, should_ignore=True, ignore_file_path=None):
