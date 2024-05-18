@@ -78,6 +78,47 @@ result = way3.get_current_dir()
 print(result)  # prints the current working directory
 ```
 
+### create_directory(directory_name: str, directory_path: Union[str, os.PathLike] = ".") -> str
+
+Creates a new directory with the given name.
+
+Example:
+
+```python
+import way3
+
+result = way3.create_directory("my_directory")
+print(result)  # prints the absolute path of the created directory
+```
+
+### rename_directory(original_name: str, new_name: str) -> str
+
+Renames a directory with a new name.
+
+Example:
+
+```python
+import way3
+
+result = way3.rename_directory("old_directory", "new_directory")
+print(result)  # prints the absolute path of the renamed directory
+```
+
+### delete_directory(directory_name: str, directory_path: Union[str, os.PathLike] = ".") -> str
+
+Deletes a directory and all its contents.
+
+Example:
+
+```python
+import way3
+
+result = way3.delete_directory("my_directory")
+print(result)  # prints the absolute path of the deleted directory
+```
+
+Let me know if you need any further modifications!
+
 ## Testing
 
 To run the tests, you can use the following command:

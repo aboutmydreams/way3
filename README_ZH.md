@@ -78,6 +78,45 @@ result = way3.get_current_dir()
 print(result)  # 打印当前工作目录
 ```
 
+### create_directory(目录名: str, 目录路径: Union[str, os.PathLike] = ".") -> str
+
+创建一个具有给定名称的新目录。
+
+示例：
+
+```python
+import way3
+
+result = way3.create_directory("我的目录")
+print(result)  # 打印创建的目录的绝对路径
+```
+
+### rename_directory(原始名称: str, 新名称: str) -> str
+
+重命名一个目录。
+
+示例：
+
+```python
+import way3
+
+result = way3.rename_directory("旧目录", "新目录")
+print(result)  # 打印重命名后的目录的绝对路径
+```
+
+### delete_directory(目录名: str, 目录路径: Union[str, os.PathLike] = ".") -> str
+
+删除一个目录及其所有内容。
+
+示例：
+
+```python
+import way3
+
+result = way3.delete_directory("我的目录")
+print(result)  # 打印删除的目录的绝对路径
+```
+
 ## 测试
 
 要运行测试，可以使用以下命令：
