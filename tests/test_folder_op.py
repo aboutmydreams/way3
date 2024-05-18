@@ -1,24 +1,48 @@
-from way3 import create_file, delete_file
+from way3 import create_directory, rename_directory, delete_directory
 
 import unittest
+import shutil
 import os
 
 
-class TestFileOp(unittest.TestCase):
-    def test_create_file(self):
-        result = create_file("./test.txt", "test")
-        with open("./test.txt", "r") as f:
-            file_content = f.read()
-        self.assertEqual(result[0], True, "result fail: expected file")
-        self.assertEqual(file_content, "test", "result fail: expected file")
-        if os.path.isfile("test.txt"):
-            os.remove("test.txt")
-            print("test.txt file deleted.")
-
-    def test_delete_file(self):
-        result = create_file("./test.txt", "test")
-        self.assertEqual(result[0], True, "result fail: expected file")
-        delete_file("./test.txt")
+class TestDirectoryOp(unittest.TestCase):
+    def test_create_directory(self):
+        result = create_directory("test_dir")
         self.assertEqual(
-            os.path.isfile("test.txt"), False, "result fail: expected False"
+            result,
+            os.path.join(os.getcwd(), "test_dir"),
+            "result fail: expected directory",
+        )
+        self.assertTrue(
+            os.path.exists("test_dir"), "result fail: directory not created"
+        )
+        if os.path.exists("test_dir"):
+            shutil.rmtree("test_dir")
+            print("test_dir deleted.")
+
+    def test_rename_directory(self):
+        create_directory("test_dir")
+        result = rename_directory("test_dir", "new_test_dir")
+        self.assertEqual(
+            result,
+            os.path.join(os.getcwd(), "new_test_dir"),
+            "result fail: expected directory",
+        )
+        self.assertTrue(
+            os.path.exists("new_test_dir"), "result fail: directory not renamed"
+        )
+        if os.path.exists("new_test_dir"):
+            shutil.rmtree("new_test_dir")
+            print("new_test_dir deleted.")
+
+    def test_delete_directory(self):
+        create_directory("test_dir")
+        result = delete_directory("test_dir")
+        self.assertEqual(
+            result,
+            os.path.join(os.getcwd(), "test_dir"),
+            "result fail: expected directory",
+        )
+        self.assertFalse(
+            os.path.exists("test_dir"), "result fail: directory not deleted"
         )

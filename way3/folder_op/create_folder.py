@@ -3,6 +3,15 @@ import shutil
 
 
 def create_directory(directory_name):
+    """
+    Creates a new directory with the given name.
+
+    Args:
+        directory_name (str): The name of the directory to create.
+
+    Returns:
+        str: The path of the created directory, or a message indicating that the directory already exists.
+    """
     directory_path = os.path.join(os.getcwd(), directory_name)
     if not os.path.exists(directory_path):
         os.mkdir(directory_path)
@@ -14,6 +23,16 @@ def create_directory(directory_name):
 
 
 def rename_directory(original_name, new_name):
+    """
+    Renames a directory with a new name.
+
+    Args:
+        original_name (str): The original name of the directory.
+        new_name (str): The new name for the directory.
+
+    Returns:
+        str: The path of the renamed directory, or a message indicating an error or that the directory does not exist.
+    """
     original_path = os.path.join(os.getcwd(), original_name)
     new_path = os.path.join(os.getcwd(), new_name)
     if os.path.exists(original_path):
@@ -35,6 +54,15 @@ def rename_directory(original_name, new_name):
 
 
 def delete_directory(directory_name):
+    """
+    Deletes a directory and all its contents.
+
+    Args:
+        directory_name (str): The name of the directory to delete.
+
+    Returns:
+        str: The path of the deleted directory, or a message indicating that the directory does not exist.
+    """
     directory_path = os.path.join(os.getcwd(), directory_name)
     if os.path.exists(directory_path):
         shutil.rmtree(directory_path)
