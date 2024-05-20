@@ -13,20 +13,22 @@ from .file_op.edit import replace_string_in_file as replace_string_in_file  # no
 
 # File Find
 from .file_find.current_dir import get_current_dir as get_current_dir  # noqa: E402
-from .file_find.traverse_files_from_folder import parse_gitignore as parse_gitignore  # noqa: E402
-from .file_find.traverse_files_from_folder import is_gitignored as is_gitignored  # noqa: E402
-from .file_find.traverse_files_from_folder import (  # noqa: E402
+from .file_find.get_files_from_folder import parse_gitignore as parse_gitignore  # noqa: E402
+from .file_find.get_files_from_folder import is_gitignored as is_gitignored  # noqa: E402
+from .file_find.get_files_from_folder import (  # noqa: E402
     get_files_in_directory as get_files_in_directory,
 )
-from .file_find.traverse_files_from_folder import (  # noqa: E402
+from .file_find.get_files_from_folder import (  # noqa: E402
     get_directory_structure as get_directory_structure,
 )
-from .file_find.traverse_files_from_folder import (  # noqa: E402
+from .file_find.get_files_from_folder import (  # noqa: E402
     get_directory_folder_list as get_directory_folder_list,
 )
-from .file_find.traverse_files_from_folder import (  # noqa: E402
+from .file_find.get_files_from_folder import (  # noqa: E402
     get_directory_file_list as get_directory_file_list,
 )
+from .file_find.find_files import find_files_by_name as find_files_by_name  # noqa: E402)
+from .file_find.find_folders import find_folders_by_name as find_folders_by_name  # noqa: E402)
 
 # Folder OP
 from .folder_op.create_folder import create_directory as create_directory  # noqa: E402
@@ -36,3 +38,6 @@ from .folder_op.create_folder import delete_directory as delete_directory  # noq
 ## read file
 from .file_op.read import read_file as read_file  # noqa: E402
 from .file_op.read import read_line as read_line  # noqa: E402
+
+# utils
+from .utils.os_tree import tree as tree  # noqa: E402

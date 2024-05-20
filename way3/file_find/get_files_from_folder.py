@@ -49,9 +49,9 @@ def get_directory_structure(path) -> Dict[str, Dict[str, List[str]]]:
 
 def get_directory_folder_list(path) -> List[str]:
     """
-    获取指定路径下的目录结构
+    获取指定路径下的文件夹列表
     :param path: 路径
-    :return: 目录结构
+    :return: 文件夹绝对路径列表
     """
     directory_structure = get_directory_structure(path)
     absolute_path = list(directory_structure.keys())[0]
@@ -60,9 +60,9 @@ def get_directory_folder_list(path) -> List[str]:
 
 def get_directory_file_list(path) -> List[str]:
     """
-    获取指定路径下的目录结构
+    获取指定路径下的文件列表
     :param path: 路径
-    :return: 目录结构
+    :return: 文件绝对路径列表
     """
     directory_structure = get_directory_structure(path)
     absolute_path = list(directory_structure.keys())[0]
