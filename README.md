@@ -22,6 +22,12 @@ To install Way3, you can use pip:
 pip install way3
 ```
 
+or use poetry:
+
+```bash
+poetry add way3 
+```
+
 ## Usage
 
 Here are the functions provided by Way3:

@@ -22,6 +22,12 @@ Way3 是一个用于执行创建、添加到和删除文件等文件操作的 Py
 pip install way3
 ```
 
+或者使用 poetry 安装：
+
+```bash
+poetry add way3 
+```
+
 ## 使用
 
 Way3 提供了以下函数：
