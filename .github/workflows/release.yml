@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: hhttps://pypi.org/p/way3
+      url: https://pypi.org/p/way3
     permissions:
       id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
 
